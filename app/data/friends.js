@@ -6,4 +6,4 @@ let friendData = [
     },
 ]
 
-module.exports(friendData);
+module.exports = friendData;
