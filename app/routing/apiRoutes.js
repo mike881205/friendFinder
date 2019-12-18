@@ -31,63 +31,106 @@ module.exports = function (app) {
   // ---------------------------------------------------------------------------
 
   app.post("/api/friends", function (req, res) {
-    // Note the code here. Our "server" will respond to requests and let users know if they have a table or not.
-    // It will do this by sending out the value "true" have a table
-    // req.body is available since we're using the body parsing middleware
 
+    // ==================================================================
+    // Find the best match
+    // ==================================================================
+
+    // Store User Scores into variable
     let newScores = req.body.scores
+
     let finalScore = []
 
+    // Loop through the friends object
     for (let i = 0; i < friendsData.length; i++) {
 
+      // Store the friend scores array of the current index to a variable
       let friendScores = friendsData[i].scores
       let diffArr = []
-      let scoreTotal = 0
 
+      // Loop through the user scores and friend scores of the current index
       for (let i = 0; i < 10; i++) {
 
+        //Store the value of each index in a variable
         let newScoreInt = parseInt(newScores[i]);
         let friendScoreInt = parseInt(friendScores[i])
+
+        // Store the difference between the two indexes in a variable
         let difference = (newScoreInt - friendScoreInt)
 
+        // If the difference is a negative number, multiply the difference by negative one (-1)
         if (difference < 0) {
           difference = difference * -1;
         }
 
+        // Add the difference to an array (diffArr)
         diffArr.push(difference)
 
       }
 
+      let scoreTotal = 0
+
+      // Loop through the array of differences (diffArr) and add all of the values together
       for (let i = 0; i < diffArr.length; i++) {
         scoreTotal = scoreTotal += diffArr[i]
       }
 
+      // Add the total score to an array (finalScore)
       finalScore.push(scoreTotal)
 
     }
 
+    // This function will find the lowest value in a given array
     function findLowestScore(input) {
       if (toString.call(input) !== "[object Array]")
         return false;
       return Math.min.apply(null, input);
     }
 
-    let matchIndex;
+    let matchArray = [];
 
+    // Loop through the final scores in the finalScore array
     for (let i = 0; i < finalScore.length; i++) {
 
+      // If the lowest value in the array is equal to the current index in the array
       if (findLowestScore(finalScore) === finalScore[i]) {
-        matchIndex = i
+        // Add the matching index number [i] to an array (matchArray)
+        matchArray.push(i)
       }
 
     }
 
-    let bestMatchName = friendsData[matchIndex].name
+    // ==================================================================
+    // If there are multiple matches
+    // ==================================================================
 
-    console.log(bestMatchName)
-    console.log("======================")
+    let allMatches = []
 
-    
+    // Loop through the matchArray
+    for (let i = 0; i < matchArray.length; i++) {
+
+      // Store the value of the index to a variable
+      let matchIndex = matchArray[i]
+
+      // Loop through the friendsData array
+      for (let i = 0; i < friendsData.length; i++) {
+
+        // If the matchIndex is equal to the index of the friendsData object
+        if (matchIndex === friendsData.indexOf(friendsData[i])) {
+
+          // Add the object to an array (allMatches)
+          allMatches.push(friendsData[i])
+        }
+
+      }
+
+    }
+
+    // Choose a random match and assign it to a variable
+    let match = allMatches[Math.floor(Math.random() * allMatches.length)]
+
+    console.log(match)
+    console.log("=======================")
 
     friendsData.push(req.body);
   });
