@@ -36,35 +36,38 @@ module.exports = function (app) {
     // req.body is available since we're using the body parsing middleware
     
     let scoreArray = []
-    
-    for (let i = 0; i < friendsData.length; i++) {
+    let lowestScore = Math.min(scoreArray)
+    let lowScoreIndex;
 
+    for (let i = 0; i < friendsData.length; i++) {
       let sum = 0;
       let differenceArr = []
       let score = 0
       let diffTotal;
       let difference;
+      let friendScoreInt;
+      let newScoreInt;
+      let friendScores = friendsData[i].scores
 
-      for (let j = 0; j < friendsData[i].scores.length; j++) {
+      for (let i = 0; i < friendScores.length; i++) {
+        friendScoreInt = parseInt(friendScores[i])
+      }
 
-        let friendScore = parseInt(friendsData[i].scores[j])
-        let newScore = parseInt(req.body.scores[j])
-        difference = (newScore - friendScore)
+      for (let i = 0; i < req.body.scores.length; i++) {
+        newScoreInt = parseInt(req.body.scores[i])
+      }
 
-        if (difference < 0) {
-          difference = difference * -1;
-        }
+      difference = (newScoreInt - friendScoreInt)
 
+      if (difference < 0) {
+        difference = difference * -1;
       }
 
       differenceArr.push(difference)
 
       for (let i = 0; i < differenceArr.length; i++) {
-
         diffTotal = sum += differenceArr[i]
-
         score = score + diffTotal
-
       }
 
       scoreArray.push(score)
@@ -72,6 +75,21 @@ module.exports = function (app) {
     }
 
     console.log(scoreArray)
+    console.log(lowestScore)
+
+    for (let i = 0; i < scoreArray.length; i++) {
+      if (lowestScore === scoreArray[i]) {
+        lowScoreIndex = i
+      }
+    }
+
+    console.log(lowScoreIndex)
+
+    for (let i = 0; i < friendsData.length; i++) {
+      if (lowScoreIndex = i) {
+        console.log(friendsData[i])
+      }
+    }
 
     friendsData.push(req.body);
   });
