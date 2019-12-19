@@ -41,11 +41,12 @@ module.exports = function (app) {
 
     let finalScore = []
 
-    // Loop through the friends object
+    // Loop through the friends array
     for (let i = 0; i < friendsData.length; i++) {
 
       // Store the friend scores array of the current index to a variable
       let friendScores = friendsData[i].scores
+
       let diffArr = []
 
       // Loop through the user scores and friend scores of the current index
@@ -92,7 +93,7 @@ module.exports = function (app) {
     // Loop through the final scores in the finalScore array
     for (let i = 0; i < finalScore.length; i++) {
 
-      // If the lowest value in the array is equal to the current index in the array
+      // If the lowest value in the final score array is equal to the current index in the array
       if (findLowestScore(finalScore) === finalScore[i]) {
         // Add the matching index number [i] to an array (matchArray)
         matchArray.push(i)
@@ -101,7 +102,7 @@ module.exports = function (app) {
     }
 
     // ==================================================================
-    // If there are multiple matches
+    // If there are multiple matches with the same score
     // ==================================================================
 
     let allMatches = []
@@ -129,8 +130,11 @@ module.exports = function (app) {
     // Choose a random match and assign it to a variable
     let match = allMatches[Math.floor(Math.random() * allMatches.length)]
 
-    console.log(match)
+    console.log(match.name)
+    console.log(match.photo)
     console.log("=======================")
+
+    res.json(match)
 
     friendsData.push(req.body);
   });
