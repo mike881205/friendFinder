@@ -81,6 +81,7 @@ module.exports = function (app) {
 
     }
 
+
     // This function will find the lowest value in a given array
     function findLowestScore(input) {
       if (toString.call(input) !== "[object Array]")
