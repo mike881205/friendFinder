@@ -1,30 +1,25 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8">
-  <title>FriendFinder</title>
-
-  <!-- Latest compiled and minified CSS & JS -->
+  <title>Who's Your Gaming Buddy?</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <script src="https://code.jquery.com/jquery.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-
-  <!-- Font Awesome Glyphicons -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-
-  <!-- Chosen -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.5.1/chosen.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.5.1/chosen.jquery.min.js"></script>
-
 </head>
 
 <body>
 
   <div class="container">
 
-    <h2>Survey Questions</h2>
+    <h2>Who's Your Gaming Buddy?</h2>
+    <hr>
+
+    <p>Please fill out each field in the form below:</p>
     <hr>
 
     <h3><strong>About You</strong></h3>
@@ -36,10 +31,10 @@
 
     <hr>
 
-    <h3><strong>Question 1 (Adventure)</strong></h3>
+    <h3><strong>Question 1</strong></h3>
     <h4>You enjoy open worlds, and lots of exploring</h4>
     <select class="chosen-select" id="q1">
-      <option value=""></option>
+      <option value="0">Please select</option>
       <option value="1">1 (Strongly Disagree)</option>
       <option value="2">2</option>
       <option value="3">3</option>
@@ -47,10 +42,10 @@
       <option value="5">5 (Strongly Agree)</option>
     </select>
 
-    <h3><strong>Question 2 (FPS)</strong></h3>
+    <h3><strong>Question 2</strong></h3>
     <h4>Precision and speed are your best friends</h4>
     <select class="chosen-select" id="q2">
-      <option value=""></option>
+      <option value="0">Please select</option>
       <option value="1">1 (Strongly Disagree)</option>
       <option value="2">2</option>
       <option value="3">3</option>
@@ -59,10 +54,10 @@
     </select>
 
 
-    <h3><strong>Question 3 (Fighting)</strong></h3>
+    <h3><strong>Question 3</strong></h3>
     <h4>Button mashers are the worst kind of people</h4>
     <select class="chosen-select" id="q3">
-      <option value=""></option>
+      <option value="0">Please select</option>
       <option value="1">1 (Strongly Disagree)</option>
       <option value="2">2</option>
       <option value="3">3</option>
@@ -71,10 +66,10 @@
     </select>
 
 
-    <h3><strong>Question 4 (Strategy/RPG)</strong></h3>
+    <h3><strong>Question 4</strong></h3>
     <h4>You like to plan your journey with precision</h4>
     <select class="chosen-select" id="q4">
-      <option value=""></option>
+      <option value="0">Please select</option>
       <option value="1">1 (Strongly Disagree)</option>
       <option value="2">2</option>
       <option value="3">3</option>
@@ -83,10 +78,10 @@
     </select>
 
 
-    <h3><strong>Question 5 (Puzzle)</strong></h3>
+    <h3><strong>Question 5</strong></h3>
     <h4>For every problem, there is a solution</h4>
     <select class="chosen-select" id="q5">
-      <option value=""></option>
+      <option value="0">Please select</option>
       <option value="1">1 (Strongly Disagree)</option>
       <option value="2">2</option>
       <option value="3">3</option>
@@ -95,10 +90,10 @@
     </select>
 
 
-    <h3><strong>Question 6 (Adventure)</strong></h3>
+    <h3><strong>Question 6</strong></h3>
     <h4>Getting side tracked is half of the fun</h4>
     <select class="chosen-select" id="q6">
-      <option value=""></option>
+      <option value="0">Please select</option>
       <option value="1">1 (Strongly Disagree)</option>
       <option value="2">2</option>
       <option value="3">3</option>
@@ -107,10 +102,10 @@
     </select>
 
 
-    <h3><strong>Question 7 (FPS)</strong></h3>
+    <h3><strong>Question 7</strong></h3>
     <h4>No campers allowed!</h4>
     <select class="chosen-select" id="q7">
-      <option value=""></option>
+      <option value="0">Please select</option>
       <option value="1">1 (Strongly Disagree)</option>
       <option value="2">2</option>
       <option value="3">3</option>
@@ -119,10 +114,10 @@
     </select>
 
 
-    <h3><strong>Question 8 (Fighting)</strong></h3>
+    <h3><strong>Question 8</strong></h3>
     <h4>You've gotta have the fastest hand in the west to be the best</h4>
     <select class="chosen-select" id="q8">
-      <option value=""></option>
+      <option value="0">Please select</option>
       <option value="1">1 (Strongly Disagree)</option>
       <option value="2">2</option>
       <option value="3">3</option>
@@ -130,10 +125,10 @@
       <option value="5">5 (Strongly Agree)</option>
     </select>
 
-    <h3><strong>Question 9 (Strategy/RPG)</strong></h3>
+    <h3><strong>Question 9</strong></h3>
     <h4>Everybody has specific strengths and weaknesses</h4>
     <select class="chosen-select" id="q9">
-      <option value=""></option>
+      <option value="0">Please select</option>
       <option value="1">1 (Strongly Disagree)</option>
       <option value="2">2</option>
       <option value="3">3</option>
@@ -141,10 +136,10 @@
       <option value="5">5 (Strongly Agree)</option>
     </select>
 
-    <h3><strong>Question 10 (Puzzle)</strong></h3>
+    <h3><strong>Question 10</strong></h3>
     <h4>Logic is your best friend</h4>
     <select class="chosen-select" id="q10">
-      <option value=""></option>
+      <option value="0">Please select</option>
       <option value="1">1 (Strongly Disagree)</option>
       <option value="2">2</option>
       <option value="3">3</option>
@@ -156,13 +151,15 @@
     <br>
 
     <!-- Submit Button -->
-    <button type="submit" class="btn btn-primary btn-lg btn-block" id="submit"><i class="fa fa-check-circle" aria-hidden="true"></i>
-     Submit</button>
+    <button type="submit" class="btn btn-primary btn-lg btn-block" id="submit"><i class="fa fa-check-circle"
+        aria-hidden="true"></i>
+      Submit</button>
 
     <hr>
     <footer class="footer">
       <div class="container">
-        <p><a href="/api/friends">API Friends List</a> | <a href="https://github.com/afhaque/friendfinder">GitHub Repo</a></p>
+        <p><a href="/api/friends">API Friends List</a> | <a href="https://github.com/afhaque/friendfinder">GitHub
+            Repo</a></p>
       </div>
     </footer>
 
@@ -180,7 +177,8 @@
         </div>
         <div class="modal-body">
           <h2 id="match-name"></h2>
-          <img id="match-img" src="https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg" alt="">
+          <p id="match-info"></p>
+          <img id="match-img" src="" alt="">
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -191,7 +189,8 @@
   </div>
 
   <script type="text/javascript">
-    // Chosen CSS
+
+    // CSS
     let config = {
       ".chosen-select": {},
       ".chosen-select-deselect": {
@@ -213,19 +212,19 @@
     }
 
     // Capture the form inputs
-    $("#submit").on("click", function(event) {
+    $("#submit").on("click", function (event) {
       event.preventDefault();
 
       // Form validation
       function validateForm() {
         let isValid = true;
-        $(".form-control").each(function() {
+        $(".form-control").each(function () {
           if ($(this).val() === "") {
             isValid = false;
           }
         });
 
-        $(".chosen-select").each(function() {
+        $(".chosen-select").each(function () {
 
           if ($(this).val() === "") {
             isValid = false;
@@ -254,21 +253,40 @@
           ]
         };
 
-        // AJAX post the data to the friends API.
-        $.post("/api/friends", userData, function(friendsData) {
+        // Post the data to the friends API.
+        $.post("/api/friends", userData, function (friendsData) {
 
           // Grab the result from the AJAX post so that the best match's name and photo are displayed.
           $("#match-name").text(friendsData.name);
+          $("#match-info").text(friendsData.info);
           $("#match-img").attr("src", friendsData.photo);
 
           // Show the modal with the best match
           $("#results-modal").modal("toggle");
 
         });
+
+        // Rest all values of each field
+        $(".form-control").each(function () {
+          $(this).val("")
+        });
+
+        $(".chosen-select").each(function () {
+          $(this).val("")
+        });
+
       } else {
         alert("Please fill out all fields before submitting!");
       }
+
+
     });
+
+    function resetAll() {
+      $("#name").val("")
+      $("#photo").val("")
+      $("select").each(function () { this.selectedIndex = 0 });
+    }
   </script>
 
 </body>

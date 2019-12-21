@@ -1,55 +1,39 @@
 // ===============================================================================
-// LOAD DATA
-// We are linking our routes to a series of "data" sources.
-// These data sources hold arrays of information on table-data, waitinglist, etc.
+// Load in Friends Data
 // ===============================================================================
 
 let friendsData = require("../data/friends.js");
-
 
 // ===============================================================================
 // ROUTING
 // ===============================================================================
 
 module.exports = function (app) {
-  // API GET Requests
-  // Below code handles when users "visit" a page.
-  // In each of the below cases when a user visits a link
-  // (ex: localhost:PORT/api/admin... they are shown a JSON of the data in the table)
-  // ---------------------------------------------------------------------------
 
+  // When the user visists the '/api/friends' link, they are shown a JSON of the data in the table
   app.get("/api/friends", function (req, res) {
     res.json(friendsData);
   });
 
-  // API POST Requests
   // Below code handles when a user submits a form and thus submits data to the server.
-  // In each of the below cases, when a user submits form data (a JSON object)
-  // ...the JSON is pushed to the appropriate JavaScript array
-  // (ex. User fills out a reservation request... this data is then sent to the server...
-  // Then the server saves the data to the tableData array)
-  // ---------------------------------------------------------------------------
-
   app.post("/api/friends", function (req, res) {
 
-    // ==================================================================
-    // Find the best match
-    // ==================================================================
-
-    // Store User Scores into variable
+    // Store User Scores into a variable
     let newScores = req.body.scores
 
+    // This array will hold the 'total of the differences' for the score of each friend (scoreTotal)
     let finalScore = []
 
-    // Loop through the friends array
+    // Loop through the friends data array
     for (let i = 0; i < friendsData.length; i++) {
 
       // Store the friend scores array of the current index to a variable
       let friendScores = friendsData[i].scores
 
+      // This array will hold the values of the difference between each friendScores[i] & newScores[i] of the current friend
       let diffArr = []
 
-      // Loop through the user scores and friend scores of the current index
+      // Loop through each value of the user scores and friend scores
       for (let i = 0; i < 10; i++) {
 
         //Store the value of each index in a variable
@@ -59,7 +43,7 @@ module.exports = function (app) {
         // Store the difference between the two indexes in a variable
         let difference = (newScoreInt - friendScoreInt)
 
-        // If the difference is a negative number, multiply the difference by negative one (-1)
+        // If the difference is a negative number, multiply the difference by negative one (-1) to make the number positive
         if (difference < 0) {
           difference = difference * -1;
         }
@@ -69,6 +53,7 @@ module.exports = function (app) {
 
       }
 
+      // Each time the scores of a friend are evaluated set the score total to 0
       let scoreTotal = 0
 
       // Loop through the array of differences (diffArr) and add all of the values together
@@ -89,54 +74,37 @@ module.exports = function (app) {
       return Math.min.apply(null, input);
     }
 
-    let matchArray = [];
+    // Create a variable to hold the index of the best match
+    let bestMatchIndex;
 
     // Loop through the final scores in the finalScore array
     for (let i = 0; i < finalScore.length; i++) {
 
       // If the lowest value in the final score array is equal to the current index in the array
       if (findLowestScore(finalScore) === finalScore[i]) {
-        // Add the matching index number [i] to an array (matchArray)
-        matchArray.push(i)
-      }
 
-    }
-
-    // ==================================================================
-    // If there are multiple matches with the same score
-    // ==================================================================
-
-    let allMatches = []
-
-    // Loop through the matchArray
-    for (let i = 0; i < matchArray.length; i++) {
-
-      // Store the value of the index to a variable
-      let matchIndex = matchArray[i]
-
-      // Loop through the friendsData array
-      for (let i = 0; i < friendsData.length; i++) {
-
-        // If the matchIndex is equal to the index of the friendsData object
-        if (matchIndex === friendsData.indexOf(friendsData[i])) {
-
-          // Add the object to an array (allMatches)
-          allMatches.push(friendsData[i])
-        }
+        // Store the value of the index to a variable
+        bestMatchIndex = i
 
       }
 
     }
 
-    // Choose a random match and assign it to a variable
-    let match = allMatches[Math.floor(Math.random() * allMatches.length)]
+    // Create a variable to store the information of the best match
+    let bestMatch;
 
-    console.log(match.name)
-    console.log(match.photo)
-    console.log("=======================")
+    // Loop through the friends data array
+    for (let i = 0; i < friendsData.length; i++) {
 
-    res.json(match)
+      // The best match is the object with an index value equal to the 'bestMatchIndex'
+      // Store the object information to the bestMatch variable
+      bestMatch = friendsData[bestMatchIndex]
+    }
 
+    // send the results to the survey.html file
+    res.json(bestMatch)
+
+    // Add the new user information to the friends array
     friendsData.push(req.body);
   });
 };
