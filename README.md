@@ -84,7 +84,7 @@ Once the server code is run, the server will connect to the selected port and br
 
     5. Looping through the friends data array again, find the object with the index value equal to the best match index and store the object in the 'bestMatch' variable
 
-    6. Send the 'bestMatch' object information JSON response
+    6. Send the 'bestMatch' object information JSON response (see the survey page information above)
 
     7. Push the submitted user data to the friends data array.
 
