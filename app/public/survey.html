@@ -181,7 +181,7 @@
           <img id="match-img" src="" alt="">
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-default" id="dismissBtn" data-dismiss="modal">Close</button>
         </div>
       </div>
 
@@ -266,15 +266,6 @@
 
         });
 
-        // Rest all values of each field
-        $(".form-control").each(function () {
-          $(this).val("")
-        });
-
-        $(".chosen-select").each(function () {
-          $(this).val("")
-        });
-
       } else {
         alert("Please fill out all fields before submitting!");
       }
@@ -282,11 +273,11 @@
 
     });
 
-    function resetAll() {
-      $("#name").val("")
-      $("#photo").val("")
-      $("select").each(function () { this.selectedIndex = 0 });
-    }
+    // Reload the page when the user click the 'close' modal button to reset the page and values
+    $("#dismissBtn").on("click", function () {
+      location.reload();
+    })
+
   </script>
 
 </body>
