@@ -177,7 +177,6 @@
         </div>
         <div class="modal-body">
           <h2 id="match-name"></h2>
-          <p id="match-info"></p>
           <img id="match-img" src="" alt="">
         </div>
         <div class="modal-footer">
@@ -258,7 +257,6 @@
 
           // Grab the result from the AJAX post so that the best match's name and photo are displayed.
           $("#match-name").text(friendsData.name);
-          $("#match-info").text(friendsData.info);
           $("#match-img").attr("src", friendsData.photo);
 
           // Show the modal with the best match

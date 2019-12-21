@@ -22,7 +22,7 @@ module.exports = function (app) {
     let newScores = req.body.scores
 
     // This array will hold the 'total of the differences' for the score of each friend (scoreTotal)
-    let finalScore = []
+    let finalScores = []
 
     // Loop through the friends data array
     for (let i = 0; i < friendsData.length; i++) {
@@ -61,8 +61,8 @@ module.exports = function (app) {
         scoreTotal = scoreTotal += diffArr[i]
       }
 
-      // Add the total score to an array (finalScore)
-      finalScore.push(scoreTotal)
+      // Add the total score to an array (finalScores)
+      finalScores.push(scoreTotal)
 
     }
 
@@ -77,11 +77,11 @@ module.exports = function (app) {
     // Create a variable to hold the index of the best match
     let bestMatchIndex;
 
-    // Loop through the final scores in the finalScore array
-    for (let i = 0; i < finalScore.length; i++) {
+    // Loop through the final scores in the finalScores array
+    for (let i = 0; i < finalScores.length; i++) {
 
       // If the lowest value in the final score array is equal to the current index in the array
-      if (findLowestScore(finalScore) === finalScore[i]) {
+      if (findLowestScore(finalScores) === finalScores[i]) {
 
         // Store the value of the index to a variable
         bestMatchIndex = i
